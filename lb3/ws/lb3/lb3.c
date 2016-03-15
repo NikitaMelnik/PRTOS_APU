@@ -26,24 +26,24 @@ int main(int argc, char *argv[]) {
 			msg.type = 0;
 			sscanf(command + 1, "%X", &msg.buf);
 			status = MsgSend(coid, &msg, sizeof(msg), &rmsg, sizeof(rmsg));
-			printf("Write port A: message <%d>\n", &rmsg);
+			printf("Write port A: message <0x%X>\n", msg.buf);
 			break;
 
 		case 'C':       //Write port C
 			msg.type = 1;
 			sscanf(command + 1, "%X", &msg.buf);
 			status = MsgSend(coid, &msg, sizeof(msg), &rmsg, sizeof(rmsg));
-			printf("Write port C: message <%d>\n", msg.buf);
+			printf("Write port C: message <0x%X>\n", msg.buf);
 			break;
 		case 'c':       //Read port  C
 			msg.type = 2;
 			status = MsgSend(coid, &msg, sizeof(msg), &rmsg, sizeof(rmsg));
-			printf("Port C: %hhX\n", &rmsg);
+			printf("Port C: 0x%X\n", rmsg);
 			break;
 		case 'b':       //Read port  B
 			msg.type = 3;
 			status = MsgSend(coid, &msg, sizeof(msg), &rmsg, sizeof(rmsg));
-			printf("Port B: %hhX\n", &rmsg);
+			printf("Port B: 0x%X\n", rmsg);
 			break;
 
 		case 'E':
